@@ -1,31 +1,35 @@
-﻿using NetPresentValueService.Domain.Features.DiscountRates;
+﻿using NetPresentValueService.Application.Features.DiscountRates;
+using NetPresentValueService.Domain.Features.CashFlows;
+using NetPresentValueService.Domain.Features.DiscountRates;
 using NetPresentValueService.Domain.Features.NetPresentValueCalculation;
 
 namespace NetPresentValueService.Application.Features.NetPresentValueCalculation;
 
 public class NetPresentValueService : INetPresentValueService
 {
-    private readonly IDiscountRateRepository _discountRateRepository;
-
-    public NetPresentValueService(IDiscountRateRepository discountRateRepository)
+    public async Task<NetPresentValueResultSetDto> CalculateRangeAsync(NetPresentValueRequestDto requestDto)
     {
-        _discountRateRepository = discountRateRepository;
-    }
-
-    public async Task<IEnumerable<NetPresentValueResultDto>> CalculateRangeAsync(string userId, List<decimal> cashFlows)
-    {
-        var details = await _discountRateRepository.GetAsync(userId);
-
+        var cashFlowSet = new CashFlowSet(requestDto.CashFlows);
         var results = new List<NetPresentValueResultDto>();
-
-        var discountRates = IncrementedDiscountRateCalculator.Calculate(details);
+        
+        var incrementDetails = requestDto.DiscountRateDetails.ToDomainModel();
+        
+        var discountRates = IncrementedDiscountRateCalculator.Calculate(incrementDetails);
+        
         foreach (var discountRate in discountRates)
         {
-            var npv = NetPresentValueCalculator.Calculate(cashFlows, discountRate);
-            var resultDto = new NetPresentValueResultDto { DiscountRate = discountRate.Value, NetPresentValue = npv };
+            var npvResult = NetPresentValueCalculator.Calculate(cashFlowSet, discountRate);
+            var resultDto = new NetPresentValueResultDto()
+            {
+                DiscountRate = npvResult.DiscountRate.Value,
+                NetPresentValue = npvResult.NetPresentValue,
+            };
             results.Add(resultDto);
         }
         
-        return results;
+        return new NetPresentValueResultSetDto
+        {
+            Results = results
+        };
     }
 }

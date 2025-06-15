@@ -8,7 +8,7 @@ public class IncrementedDiscountRateCalculatorTests
     private const decimal DecimalTolerance = 0.00001m;
     
     [Fact]
-    public void LowerBoundIsEqualToUpperBound()
+    public void CalculateWithLowerBoundEqualToUpperBound()
     {
         //Assert
         var lowerBound = new DiscountRate(0.2m);
@@ -29,7 +29,7 @@ public class IncrementedDiscountRateCalculatorTests
     }
     
     [Fact]
-    public void IncrementIsHalfTheDifferenceBetweenUpperAndLowerBound()
+    public void CalculateWithIncrementThatIsHalfTheDifferenceBetweenUpperAndLowerBound()
     {
         //Assert
         var lowerBound = new DiscountRate(0.1m);
@@ -51,7 +51,7 @@ public class IncrementedDiscountRateCalculatorTests
     }
         
     [Fact]
-    public void IncrementIsOverHalfTheDifferenceBetweenUpperAndLowerBound()
+    public void CalculateWithIncrementThatIsOverHalfTheDifferenceBetweenUpperAndLowerBound()
     {
         //Assert
         var lowerBound = new DiscountRate(0.1m);
@@ -71,7 +71,7 @@ public class IncrementedDiscountRateCalculatorTests
     
             
     [Fact]
-    public void SmallIncrementGeneratesManyDiscountRates()
+    public void CalculateWithSmallIncrementGeneratesManyDiscountRates()
     {
         //Assert
         var lowerBound = new DiscountRate(0.1m);

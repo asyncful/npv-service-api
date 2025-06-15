@@ -1,6 +1,6 @@
 ﻿namespace NetPresentValueService.Application.Features.DiscountRates;
 
-public class IncrementedNetPresentValueDetailsDto
+public class IncrementedDiscountRateDetailsDto
 {
     public decimal LowerBoundDiscountRate { get; set; }
     public decimal UpperBoundDiscountRate { get; set; }

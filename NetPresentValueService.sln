@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Function", "NetPresentValueService.Function\NetPresentValueService.Function.csproj", "{1CAB5859-0235-40C7-A68E-A32C5735F768}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Application", "NetPresentValueService.Application\NetPresentValueService.Application.csproj", "{D31D4559-BFFF-4103-BC19-8222523EB3E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Domain", "NetPresentValueService.Domain\NetPresentValueService.Domain.csproj", "{1723A73E-6200-41A5-8329-47962E24D005}"
@@ -12,9 +10,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Doma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Application.Test", "tests\NetPresentValueService.Application.Test\NetPresentValueService.Application.Test.csproj", "{F1CDB002-0669-462B-8442-32A2EE6C06FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Function.Test", "tests\NetPresentValueService.Function.Test\NetPresentValueService.Function.Test.csproj", "{C0DCC13F-CFEE-4EE0-ABA0-61D6FDC30009}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Functions.Test", "tests\NetPresentValueService.Functions.Test\NetPresentValueService.Functions.Test.csproj", "{C0DCC13F-CFEE-4EE0-ABA0-61D6FDC30009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Infrastructure.Test", "tests\NetPresentValueService.Infrastructure.Test\NetPresentValueService.Infrastructure.Test.csproj", "{24C27F7D-FF6E-4E2E-A909-572FADBCB620}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPresentValueService.Functions", "src\NetPresentValueService.Functions\NetPresentValueService.Functions.csproj", "{5D11AE02-F52A-42C7-B1FD-A1056DE3EABF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1CAB5859-0235-40C7-A68E-A32C5735F768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CAB5859-0235-40C7-A68E-A32C5735F768}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CAB5859-0235-40C7-A68E-A32C5735F768}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CAB5859-0235-40C7-A68E-A32C5735F768}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D31D4559-BFFF-4103-BC19-8222523EB3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D31D4559-BFFF-4103-BC19-8222523EB3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31D4559-BFFF-4103-BC19-8222523EB3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,9 +44,9 @@ Global
 		{C0DCC13F-CFEE-4EE0-ABA0-61D6FDC30009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0DCC13F-CFEE-4EE0-ABA0-61D6FDC30009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0DCC13F-CFEE-4EE0-ABA0-61D6FDC30009}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24C27F7D-FF6E-4E2E-A909-572FADBCB620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24C27F7D-FF6E-4E2E-A909-572FADBCB620}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24C27F7D-FF6E-4E2E-A909-572FADBCB620}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24C27F7D-FF6E-4E2E-A909-572FADBCB620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D11AE02-F52A-42C7-B1FD-A1056DE3EABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D11AE02-F52A-42C7-B1FD-A1056DE3EABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D11AE02-F52A-42C7-B1FD-A1056DE3EABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D11AE02-F52A-42C7-B1FD-A1056DE3EABF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

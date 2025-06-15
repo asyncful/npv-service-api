@@ -2,5 +2,5 @@
 
 public interface INetPresentValueService
 {
-    Task<IEnumerable<NetPresentValueResultDto>> CalculateRangeAsync(string userId, List<decimal> cashFlows);
+    Task<NetPresentValueResultSetDto> CalculateRangeAsync(NetPresentValueRequestDto requestDto);
 }

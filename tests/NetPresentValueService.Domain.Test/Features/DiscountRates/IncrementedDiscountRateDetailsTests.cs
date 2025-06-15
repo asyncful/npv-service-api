@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using NetPresentValueService.Domain.Exceptions;
 using NetPresentValueService.Domain.Features.DiscountRates;
 
 namespace NetPresentValueService.Domain.Test.Features.DiscountRates;
@@ -23,7 +24,7 @@ public class IncrementedDiscountRateDetailsTests
     }
     
     [Fact]
-    public void LowerBoundHigherThanUpperBound()
+    public void InstantiateWithLowerBoundHigherThanUpperBound()
     {
         //Assert
         var lowerBound = new DiscountRate(0.2m);
@@ -34,11 +35,11 @@ public class IncrementedDiscountRateDetailsTests
         var act = () => new IncrementedDiscountRateDetails(lowerBound, upperBound, increment);
         
         //Assert
-        act.Should().Throw<ArgumentException>();
+        act.Should().Throw<DomainValidationException>().WithMessage("Upper bound discount rate must be greater than or equal to lower bound discount rate.");
     }
     
     [Fact]
-    public void IncrementIsNegative()
+    public void InstantiateWithNegativeIncrement()
     {
         //Assert
         var lowerBound = new DiscountRate(0.1m);
@@ -49,11 +50,11 @@ public class IncrementedDiscountRateDetailsTests
         var act = () => new IncrementedDiscountRateDetails(lowerBound, upperBound, increment);
         
         //Assert
-        act.Should().Throw<ArgumentException>();
+        act.Should().Throw<DomainValidationException>().WithMessage("Increment must be positive.");
     }
         
     [Fact]
-    public void IncrementIsZero()
+    public void InstantiateWithZeroIncrement()
     {
         //Assert
         var lowerBound = new DiscountRate(0.1m);
@@ -64,6 +65,22 @@ public class IncrementedDiscountRateDetailsTests
         var act = () => new IncrementedDiscountRateDetails(lowerBound, upperBound, increment);
         
         //Assert
-        act.Should().Throw<ArgumentException>();
+        act.Should().Throw<DomainValidationException>().WithMessage("Increment must be positive.");
+    }
+    
+            
+    [Fact]
+    public void InstantiateWithValuesThatWouldGenerateOver100DiscountRates()
+    {
+        //Assert
+        var lowerBound = new DiscountRate(0m);
+        var upperBound = new DiscountRate(1m);
+        var increment = new DiscountRate(0.0001m);
+        
+        //Act
+        var act = () => new IncrementedDiscountRateDetails(lowerBound, upperBound, increment);
+        
+        //Assert
+        act.Should().Throw<DomainValidationException>().WithMessage("Upper and Lower bound discount rates should not allow for more than 100 incremented discount rates.");
     }
 }
